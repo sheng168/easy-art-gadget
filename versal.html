@@ -40,7 +40,7 @@ player.on('attributesChanged', function(attrs){
 
 player.on('editableChanged', function(editableObj){
  if(editableObj.editable) {
-   alert($('input[name="author"]').val());
+//   alert($('input[name="author"]').val());
    $('input[name="author"]').val('author');
    document.body.appendChild(document.createTextNode('author '));
  } else {
