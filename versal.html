@@ -9,35 +9,37 @@
 
 <body>
 
-  <h2>Change values and click Redraw</h2>
+  <div ID="header2">
+    <h2>Change Values and Click Redraw</h2>
+  </div>
   <h4 class="instruction">instruction</h4>
 
-  <div>
-    MinRowCols: <input type="number" name="minRowCols" value="4">
+  <div class="lineOne" style="background-color: red">
+    <div class="One">MinRowCols: <input style="background-color: red; border: red" type="number" name="minRowCols" value="4"></div>
     <span class="author-only">
-      Min: <input type="number" name="minRowColsMin" value="1">
-      Max: <input type="number" name="minRowColsMax" value="20">
+      Min: <input style="background-color: red; border: red" type="number" name="minRowColsMin" value="1">
+      Max: <input style="background-color: red; border: red" type="number" name="minRowColsMax" value="20">
     </span>
   </div>
 
-  <div>
-    MaxRowCols: <input type="text" name="maxRowCols" value="6">
+  <div class="lineOne" style="background-color: yellow">
+     <div class="One">MaxRowCols: <input style="background-color: yellow; border: yellow" type="text" name="maxRowCols" value="6"></div>
     <span class="author-only">
-      Min: <input type="number" name="maxRowColsMin" value="1">
-      Max: <input type="number" name="maxRowColsMax" value="20">
+      Min: <input style="background-color: yellow; border: yellow" type="number" name="maxRowColsMin" value="1">
+      Max: <input style="background-color: yellow; border: yellow" type="number" name="maxRowColsMax" value="20">
     </span>
   </div>
 
-  <div>
-    Recursion: <input type="text" name="recursionChance" value="0.2">
+  <div class="lineTwo" style="background-color: blue">
+    Recursion: <input style="background-color: blue; border: blue" type="text" name="recursionChance" value="0.2">
   </div>
-  <div>
-    RecursionDepreciationRate: <input type="text" name="recursionDepreciationRate" value="0.05"><br>
+  <div class="lineThree" style="background-color: red">
+    RecursionDptnRate: <input style="background-color: red; border: red" type="text" name="recursionDepreciationRate" value="0.05"><br>
   </div>
-  <div>
-    StyleChance: <input type="text" name="styleChance" value="0.3"><br>
+  <div clas="lastDiv" style="background-color: yellow; width: 200px">
+    StyleChance: <input style="background-color: yellow; border: yellow"type="text" name="styleChance" value="0.3"><br>
   </div>
-  <div>
+  <div ID="buttonDiv" style="align: center">
     <button name="redraw">Redraw</button>
   </div>
 

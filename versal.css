@@ -6,7 +6,54 @@ table table { border: 0; height: 100%; }
 input {
   width: 40px;
 }
-
+body{
+	background-color: #eaeaea;
+}
 .learner .author-only {
   display: none;
+}
+
+h2{
+	text-align: center;
+}
+
+#buttonDiv{
+	margin: auto;
+}
+
+.author-only{
+	width: 300px;
+	margin-bottom: 5px;
+}
+
+.One{
+	width: 200px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.lineOne{
+	display: inline-block;
+	width: 200px;
+	margin-bottom: 5px;
+	margin-right:100px;
+	margin-top: 5px;
+}
+
+.lineTwo{
+	display: inline-block;
+	width: 200px;
+		margin-bottom: 5px;
+		margin-right: 100px;
+}
+
+.lineThree{
+	display: inline-block;
+	width: 200px;
+		margin-bottom: 5px;
+		margin-right: 50px;
+}
+
+.lastDiv{
+	width: 200px;
+	margin-bottom: 5px;
 }
