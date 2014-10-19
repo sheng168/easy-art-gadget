@@ -3,3 +3,10 @@ td { border: 3px solid black;  }
 
 table table { border: 0; height: 100%; }
 .frame > table { width: 500px; height: 500px; }
+input {
+  width: 40px;
+}
+
+.learner .author-only {
+  display: none;
+}

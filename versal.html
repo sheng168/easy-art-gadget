@@ -9,24 +9,39 @@
 
 <body>
 
-  Change values and click Redraw<br/>
-  <input type="text" name="author" value="-" disabled="true" size="50">
-  <br>
+  <h2>Change values and click Redraw</h2>
+  <h4 class="instruction">instruction</h4>
 
-  MinRowCols: <input type="number" name="minRowCols" value="4">
-  Min: <input type="number" name="minRowColsMin" value="1">
-  Max: <input type="number" name="minRowColsMax" value="20"><br>
+  <div>
+    MinRowCols: <input type="number" name="minRowCols" value="4">
+    <span class="author-only">
+      Min: <input type="number" name="minRowColsMin" value="1">
+      Max: <input type="number" name="minRowColsMax" value="20">
+    </span>
+  </div>
 
-  MaxRowCols: <input type="text" name="maxRowCols" value="6">
-  Min: <input type="number" name="maxRowColsMin" value="1">
-  Max: <input type="number" name="maxRowColsMax" value="20"><br>
+  <div>
+    MaxRowCols: <input type="text" name="maxRowCols" value="6">
+    <span class="author-only">
+      Min: <input type="number" name="maxRowColsMin" value="1">
+      Max: <input type="number" name="maxRowColsMax" value="20">
+    </span>
+  </div>
 
+  <div>
+    Recursion: <input type="text" name="recursionChance" value="0.2">
+  </div>
+  <div>
+    RecursionDepreciationRate: <input type="text" name="recursionDepreciationRate" value="0.05"><br>
+  </div>
+  <div>
+    StyleChance: <input type="text" name="styleChance" value="0.3"><br>
+  </div>
+  <div>
+    <button name="redraw">Redraw</button>
+  </div>
 
-  Recursion: <input type="text" name="recursionChance" value="0.2"><br>
-  RecursionDepreciationRate: <input type="text" name="recursionDepreciationRate" value="0.05"><br>
-  StyleChance: <input type="text" name="styleChance" value="0.3"><br>
-  <button name="redraw">Redraw</button>
-<div class="frame"></div>
+  <div class="frame"></div>
 
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -76,17 +91,16 @@ player.on('attributesChanged', function(attrs){
 });
 
 player.on('editableChanged', function(editableObj){
- if(editableObj.editable) {
-//   alert($('input[name="author"]').val());
-   $('input[name="author"]').val('Author can set Min and Max');
-     minRowColsMin.prop('disabled', false);
-     minRowColsMax.prop('disabled', false);
-//   document.body.appendChild(document.createTextNode('Author can set Min and Max'));
- } else {
-$('input[name="author"]').val('Learner must pick value between Min and Max');
-     minRowColsMin.prop('disabled', true);
-     minRowColsMax.prop('disabled', true);
-//   document.body.appendChild(document.createTextNode('Learner must pick value between Min and Max'));
+  if(editableObj.editable) {
+    $('body').addClass('learner');
+      $('.instruction').text('Author can set Min and Max');
+      minRowColsMin.prop('disabled', false);
+      minRowColsMax.prop('disabled', false);
+  } else {
+    $('.instruction').text('Learner must pick value between Min and Max');
+    $('body').removeClass('learner');
+    minRowColsMin.prop('disabled', true);
+    minRowColsMax.prop('disabled', true);
  }
 });
 
