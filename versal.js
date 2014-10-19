@@ -11,7 +11,11 @@
 
   // random with seed
   var seed = 1;
+
   function random() {
+    if (false) {
+      return Math.random();
+    }
       var x = Math.sin(seed++) * 10000;
       return x - Math.floor(x);
   }
@@ -123,16 +127,37 @@
       recursionDepreciationRate = 0.01,
       styleChance = 0.9;
   */
+
+  function bound(input, min, max) {
+    var value = Number(input.val());
+    if (value < Number(min.val())) {
+      value = Number(min.val());
+    }
+    if (value > Number(max.val())) {
+      value = Number(max.val());
+    }
+    input.val(value);
+    return value;
+  }
+
   $('button[name="redraw"]').click(function(event){
-    minRowCols = Number($('input[name="minRowCols"]').val());
-    maxRowCols = Number($('input[name="maxRowCols"]').val());
-    recursionDepreciationRate = Number($('input[name="recursionDepreciationRate"]').val());
-    recursionChance = Number($('input[name="recursionChance"]').val());
-    recursionChance = Number($('input[name="recursionChance"]').val());
-    
-    var styleChance_ = Number($('input[name="styleChance"]').val());
-    //alert(styleChance + ' styleChance ' + styleChance_);
-    styleChance = styleChance_;
+//    minRowCols = Number($('input[name="minRowCols"]').val());
+//    if (minRowCols < Number($('input[name="minRowColsMin"]').val())) {
+//      minRowCols = Number($('input[name="minRowColsMin"]').val());
+//    }
+//    if (minRowCols > Number($('input[name="minRowColsMax"]').val())) {
+//      minRowCols = Number($('input[name="minRowColsMax"]').val());
+//    }
+//    $('input[name="minRowCols"]').val(minRowCols);
+
+//    maxRowCols = Number($('input[name="maxRowCols"]').val());
+    minRowCols = bound($('input[name="minRowCols"]'), $('input[name="minRowColsMin"]'),$('input[name="minRowColsMax"]'));
+    maxRowCols = bound($('input[name="maxRowCols"]'), $('input[name="maxRowColsMin"]'),$('input[name="maxRowColsMax"]'));
+
+    recursionDepreciationRate = Math.max(Number($('input[name="recursionDepreciationRate"]').val()),1);
+    recursionChance = Math.max(Number($('input[name="recursionChance"]').val()),1);
+    styleChance = Math.max(Number($('input[name="styleChance"]').val()),1);;
+
     
     seed = 1; // Math.random();
     redraw();

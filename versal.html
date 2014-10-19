@@ -9,9 +9,19 @@
 
 <body>
 
-  Author: <input type="text" name="author" value="-"><br>
-  MinRowCols: <input type="text" name="minRowCols" value="4"> <input type="text" name="minRowColsMin" value="1"><br>
-  MaxRowCols: <input type="text" name="maxRowCols" value="6"><br>
+  Change values and click Redraw<br/>
+  <input type="text" name="author" value="-" disabled="true" size="50">
+  <br>
+
+  MinRowCols: <input type="number" name="minRowCols" value="4">
+  Min: <input type="number" name="minRowColsMin" value="1">
+  Max: <input type="number" name="minRowColsMax" value="20"><br>
+
+  MaxRowCols: <input type="text" name="maxRowCols" value="6">
+  Min: <input type="number" name="maxRowColsMin" value="1">
+  Max: <input type="number" name="maxRowColsMax" value="20"><br>
+
+
   Recursion: <input type="text" name="recursionChance" value="0.2"><br>
   RecursionDepreciationRate: <input type="text" name="recursionDepreciationRate" value="0.05"><br>
   StyleChance: <input type="text" name="styleChance" value="0.3"><br>
@@ -25,27 +35,58 @@
 var player = new VersalPlayerAPI();
 
 var minRowColsMin = $('input[name="minRowColsMin"]');
+var minRowColsMax = $('input[name="minRowColsMax"]');
+var maxRowColsMin = $('input[name="maxRowColsMin"]');
+var maxRowColsMax = $('input[name="maxRowColsMax"]');
 
 minRowColsMin.on('blur', function(){
   player.setAttributes({
     minRowColsMin: minRowColsMin.val()
   });
 });
+minRowColsMax.on('blur', function(){
+  player.setAttributes({
+      minRowColsMax: minRowColsMax.val()
+  });
+});
+maxRowColsMin.on('blur', function(){
+  player.setAttributes({
+      maxRowColsMin: maxRowColsMin.val()
+  });
+});
+maxRowColsMax.on('blur', function(){
+  player.setAttributes({
+      maxRowColsMax: maxRowColsMax.val()
+  });
+});
 
 player.on('attributesChanged', function(attrs){
- if(attrs && attrs.minRowColsMin) {
-   minRowColsMin.val(attrs.minRowColsMin);
- }
+    if(attrs && attrs.minRowColsMin) {
+        minRowColsMin.val(attrs.minRowColsMin);
+    }
+    if(attrs && attrs.minRowColsMax) {
+        minRowColsMax.val(attrs.minRowColsMax);
+    }
+    if(attrs && attrs.maxRowColsMin) {
+        maxRowColsMin.val(attrs.maxRowColsMin);
+    }
+    if(attrs && attrs.maxRowColsMax) {
+        maxRowColsMax.val(attrs.maxRowColsMax);
+    }
 });
 
 player.on('editableChanged', function(editableObj){
  if(editableObj.editable) {
 //   alert($('input[name="author"]').val());
-   $('input[name="author"]').val('author');
-   document.body.appendChild(document.createTextNode('author '));
+   $('input[name="author"]').val('Author can set Min and Max');
+     minRowColsMin.prop('disabled', false);
+     minRowColsMax.prop('disabled', false);
+//   document.body.appendChild(document.createTextNode('Author can set Min and Max'));
  } else {
- $('input[name="author"]').val('learner');
-   document.body.appendChild(document.createTextNode('learner '));
+$('input[name="author"]').val('Learner must pick value between Min and Max');
+     minRowColsMin.prop('disabled', true);
+     minRowColsMax.prop('disabled', true);
+//   document.body.appendChild(document.createTextNode('Learner must pick value between Min and Max'));
  }
 });
 
