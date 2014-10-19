@@ -154,9 +154,9 @@
     minRowCols = bound($('input[name="minRowCols"]'), $('input[name="minRowColsMin"]'),$('input[name="minRowColsMax"]'));
     maxRowCols = bound($('input[name="maxRowCols"]'), $('input[name="maxRowColsMin"]'),$('input[name="maxRowColsMax"]'));
 
-    recursionDepreciationRate = Math.max(Number($('input[name="recursionDepreciationRate"]').val()),1);
-    recursionChance = Math.max(Number($('input[name="recursionChance"]').val()),1);
-    styleChance = Math.max(Number($('input[name="styleChance"]').val()),1);;
+    recursionDepreciationRate = Math.min(Number($('input[name="recursionDepreciationRate"]').val()),.99);
+    recursionChance = Math.min(Number($('input[name="recursionChance"]').val()),0.99);
+    styleChance = Math.min(Number($('input[name="styleChance"]').val()),0.99);;
 
     
     seed = 1; // Math.random();
